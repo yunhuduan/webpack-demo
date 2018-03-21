@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: {
-		app: "./src/app.js"
+		app: "./app.js"
 	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
@@ -11,5 +11,5 @@ module.exports = {
 	},
 	plugins: [
 
-	],
+	]
 }
