@@ -3,15 +3,15 @@ var webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
 	entry: {
-		app: "./src/app.js",
-		app1: "./src/app1.js",
-		app2: "./src/app2.js"/*,
+		app: "./app.js",
+		app1: "./app1.js",
+		app2: "./app2.js"/*,
 		vendor:"./src/lib/com.js"*/
 	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		filename: "[name].js",
-		chunkFilename: "[chunkhash].js",
+		filename: "[name]-[hash].js",
+		chunkFilename: "[chunkhash]-[hash].js",
 		publicPath: "/"
 	},
 	plugins: [
