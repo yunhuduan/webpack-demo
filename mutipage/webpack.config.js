@@ -31,6 +31,7 @@ module.exports = {
 			},
 			hash: true,
 			chunk:['manifest','app'],
+			chunksSortMode: 'dependency'
 			// necessary to consistently work with multiple chunks via CommonsChunkPlugin
 			//chunksSortMode: 'dependency'
 		}),
@@ -46,7 +47,7 @@ module.exports = {
 				// https://github.com/kangax/html-minifier#options-quick-reference
 			},
 			hash: true,
-			chunk: ['app1'],
+			chunk: ['manifest','app1'],
 			// necessary to consistently work with multiple chunks via CommonsChunkPlugin
 			chunksSortMode: 'dependency'
 		}),
@@ -62,7 +63,7 @@ module.exports = {
 				// https://github.com/kangax/html-minifier#options-quick-reference
 			},
 			hash: true,
-			chunk: ['app2'],
+			chunk: ['manifest','app2'],
 			// necessary to consistently work with multiple chunks via CommonsChunkPlugin
 			chunksSortMode: 'dependency'
 		})
