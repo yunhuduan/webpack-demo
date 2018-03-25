@@ -5,23 +5,18 @@ module.exports = {
 	entry: {
 		app: "./app.js",
 		app1: "./app1.js",
-		app2: "./app2.js"/*,
-		vendor:"./src/lib/com.js"*/
+		app2: "./app2.js"
 	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "[name]-[hash].js",
-		chunkFilename: "[chunkhash]-[hash].js",
+		chunkFilename: "chunk.[chunkhash].js",
 		publicPath: "/"
 	},
 	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor'
-		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'common',
-			minChunks: 2,
-			chunks: ['app','app1']
+			name: 'manifest',
+			minChunks: 2
 		}),
 		new HtmlWebpackPlugin({
 			filename:  path.resolve(__dirname, 'dist/index.html'),
@@ -34,9 +29,10 @@ module.exports = {
 				// more options:
 				// https://github.com/kangax/html-minifier#options-quick-reference
 			},
-			chunk:'app',
+			hash: true,
+			chunk:['manifest','app'],
 			// necessary to consistently work with multiple chunks via CommonsChunkPlugin
-			chunksSortMode: 'dependency'
+			//chunksSortMode: 'dependency'
 		}),
 		new HtmlWebpackPlugin({
 			filename:  path.resolve(__dirname, 'dist/index1.html'),
@@ -49,7 +45,8 @@ module.exports = {
 				// more options:
 				// https://github.com/kangax/html-minifier#options-quick-reference
 			},
-			chunk:'app1',
+			hash: true,
+			chunk: ['app1'],
 			// necessary to consistently work with multiple chunks via CommonsChunkPlugin
 			chunksSortMode: 'dependency'
 		}),
@@ -64,7 +61,8 @@ module.exports = {
 				// more options:
 				// https://github.com/kangax/html-minifier#options-quick-reference
 			},
-			chunk:'app2',
+			hash: true,
+			chunk: ['app2'],
 			// necessary to consistently work with multiple chunks via CommonsChunkPlugin
 			chunksSortMode: 'dependency'
 		})
